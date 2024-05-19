@@ -13,14 +13,14 @@ class Home extends Component {
   dashBoard = async () => {
     const response = await fetch(teamsApiUrl)
     const data = await response.json()
-    const fetchedData = data.map(team => ({
+    const fetchedData = data.teams.map(team => ({
       name: team.name,
       id: team.id,
       teamImageUrl: team.team_image_url,
     }))
     this.setState({iplDashBoard: fetchedData, isLoader: false})
   }
-  renderDasboard = () => {
+  renderDashboard = () => {
     const {iplDashBoard} = this.state
     return (
       <ul className="unorder-list">
